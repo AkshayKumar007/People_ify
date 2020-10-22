@@ -1,0 +1,16 @@
+{% extends "album_collection/layout.html" %}
+{% block title %} My Albums {% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{{ static('album_collection/css/folder_view.css') }}">
+    <script src="{{ static('album_collection/js/folder_view.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        {% for i in images %}
+            <img src="{{ static(i) }}" alt="A" style="width: 100%; " />  
+        {% else %}
+            No images
+        {% endfor %}
+    </div>
+{% endblock %}

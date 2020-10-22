@@ -60,7 +60,10 @@ TEMPLATES = [
         'DIRS': [],  # os.path.join(BASE_DIR, 'templates/jinja2'), ],
         'APP_DIRS': True,
         'OPTIONS': {
-        'environment': 'People_ify.jinja2.environment'
+        'environment': 'People_ify.jinja2.environment',
+        'context_processors': [
+            
+        ],
         },
     },
     {
@@ -141,3 +144,6 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # name of directory is staticfiles 
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFileStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

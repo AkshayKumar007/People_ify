@@ -1,10 +1,48 @@
-{% extends layout.html %}
+{% extends "album_collection/layout.html" %}
 {% block title %} My Albums {% endblock %}
 {% block style %}
-    <link rel="stylesheet" href="{{ url_for('static/login_auth', filename='index_stl.css') }}">
-    <script src="{{ url_for('static/login_auth', filename='index.js') }}"></script>
+    <link rel="stylesheet" href="{{ static('album_collection/css/collection.css') }}">
+    <script src="{{ static('album_collection/js/collection.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <h1>Hello, World!</h1>
+    <div class="row">
+        <div class="col-md-4">
+                {{ uname }}
+        </div>
+        <div class="col-md-8"></div>
+    </div> 
+    <div class="row">
+        <div class="col-md-3"><br></div>
+        <div class="col-md-6">
+            <br>
+            <table class="table table-striped"><!--  -->
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">S.No.</th>
+                        <th scope="col">Folder Name</th>
+                     </tr>
+                </thead>
+                <tbody>                        
+                    {% for res in folders %}
+                        <tr>
+                            <th scope="row"> {{ res }} </th>
+                            <td> <a href="{{ url('view_folder', args=[res]) }}"> <!--, folder_name=res-->
+                                    <button type="button" class="btn btn-secondary"> Review </button>
+                                 </a>
+                            </td> 
+                        </tr>                               
+                    {% endfor %}                        
+                </tbody>
+              </table>     
+        </div>          
+        <div class="col-md-3">
+            <a href="{{ url('upload', args=[uname]) }}"> <!--, folder_name=res-->
+                <button type="button" class="btn btn-secondary"> Upload </button>
+            </a><br><br>
+            <a href="{{ url('review_view', args=[uname]) }}"> <!--, folder_name=res-->
+                <button type="button" class="btn btn-secondary"> Review </button>
+            </a>
+        </div>       
+    </div>
 {% endblock %}
